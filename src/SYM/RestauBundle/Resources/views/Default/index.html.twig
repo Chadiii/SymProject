@@ -1,0 +1,39 @@
+{% extends '@SYMRestau/base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Home</h1>
+
+    <div class="row mt-3">
+        {% for item in res %}
+            <div class="col-12 col-lg-6 col-xl-4">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h3>{{ item.nom }}</h3>
+                        <h4><span class="badge badge-primary">{{ item.price }} Dh</span></h4>
+                    </div>
+                    <img class="img-responsive" style="height: 200px;  display: block; object-fit: cover;" src="{{ item.img }}" alt="Card image">
+                    {% if item.sup|length > 0 %}
+                        <div class="card-body">
+                            <h5>Suppléments </h5>
+                            <ul class="list-group">
+                                {% for ite in item.sup %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center py-0">
+                                    {{ ite.nom }}
+                                    <span class="badge badge-primary badge-pill">{{ ite.price }} dh</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    <div class="card-footer">
+                    <a href="#" class="card-link">Voir</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

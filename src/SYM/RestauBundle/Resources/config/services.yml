@@ -1,0 +1,4 @@
+services:
+#    sym_restau.example:
+#        class: SYM\RestauBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

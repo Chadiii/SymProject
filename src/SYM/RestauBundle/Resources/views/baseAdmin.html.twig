@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% set current_path = app.request.get('_route') %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{path('index')}}">SymRestau</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarColor02">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item {% if current_path == 'manageMenu' %} active {% endif %} ">
+                  <a class="nav-link" href="{{path('manageMenu')}}">Gérer Menu</a>
+                </li>
+                <li class="nav-item {% if current_path == 'addMenu' %} active {% endif %} ">
+                    <a class="nav-link" href="{{path('addMenu')}}">Ajouter Menu</a>
+                </li>
+                <li class="nav-item {% if current_path == 'manageSupplement' %} active {% endif %}">
+                    <a class="nav-link" href="{{path('manageSupplement')}}">Gérer Supplement</a>
+                  </li>
+                  <li class="nav-item {% if current_path == 'addSupplement' %} active {% endif %}">
+                      <a class="nav-link" href="{{path('addSupplement')}}">Ajouter Supplement</a>
+                  </li>
+              </ul>
+              <div class="my-2 my-lg-0">
+                <a class="btn btn-secondary my-2 my-sm-0" href="{{path('logout')}}">Me déconnecter</a>
+              </div>
+            </div>
+          </nav>
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

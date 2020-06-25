@@ -1,0 +1,65 @@
+{% extends '@SYMRestau/baseAdmin.html.twig' %}
+
+{% block title %}Supplément{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <div class="container h-100 pt-5">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12 col-lg-6 col-xl-6">
+                <div class="container">
+                    <div class="card" style="width:400px">
+                        {% if supplement != null %}
+                        <div class="card-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Id</th>
+                                        <td>{{ supplement.id }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <td>{{ supplement.nom }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Prix</th>
+                                        <td>{{ supplement.prix }} Dh</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer">
+                            <ul>
+                                <li>
+                                    <a class="btn btn-link" href="{{ path('supplement_edit', { 'id': supplement.id }) }}">Modifier</a>
+                                </li>
+                                <li>
+                                    <!-- {{ form_start(delete_form) }}
+                                        <input class="btn btn-link" type="submit" value="Supprimer">
+                                    {{ form_end(delete_form) }} -->
+                                    <a class="btn btn-link" href="{{ path('supplement_delete', { 'id': supplement.id }) }}" onclick="return confirm('Voulez vous vraiment supprimer ce supplément ?');">Supprimer</a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-link" href="{{path('supplement_index')}}">Retourner au menu</a>
+                                </li>
+                            </ul>
+                        </div>
+                        {% else %}
+                        <div class="card-body">
+                            <h5>Désolé</h5>
+                            <p>
+                                Ce supplément n'a pas été trouvé
+                            </p>
+                            <a href="{{path('supplement_index')}}" class="btn btn-primary"> Retourner au menu</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+
+

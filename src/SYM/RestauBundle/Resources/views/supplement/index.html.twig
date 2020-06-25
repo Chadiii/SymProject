@@ -6,9 +6,10 @@
 
 <div class="example-wrapper">
     <h1>Gérer les suppléments</h1>
+    <a class="btn btn-primary" href="{{ path('supplement_new') }}">Ajouter un supplement</a>
 
     <div class="card mt-5">
-        {% if listSupplements|length == 0  %}
+        {% if supplements|length == 0  %}
         <div class="card-body">
             Il n'ya aucun suppléments pour le moment !
         </div>
@@ -23,15 +24,17 @@
                 </tr>
             </thead>
             <tbody>
-                {% for item in listSupplements %}
+                {% for supplement in supplements %}
                 <tr>
                     <th>{{loop.index}}</th>
-                    <td>{{item.nom}}</td>
-                    <td>{{item.prix}} Dh</td>
+                    <td>{{supplement.nom}}</td>
+                    <td>{{supplement.prix}} Dh</td>
                     <td>
-                        <a class="btn btn-primary mr-2" href=" {{path('editSupplement', {'id':item.id})}} ">Modifier</a>
-                        <a class="btn btn-primary" href="{{path('deleteSupplement', {'id':item.id})}}"
-                            onclick="confirm('Voulez vous vraiment supprimer ce supplément ?')">Supprimer</a>
+                        <a class="btn btn-primary mr-2" href=" {{ path('supplement_show', { 'id': supplement.id }) }} ">Voir</a>
+                        <a class="btn btn-primary mr-2" href=" {{ path('supplement_edit', { 'id': supplement.id }) }} ">Modifier</a>
+
+                        <!-- <a class="btn btn-primary" href="{{path('deleteSupplement', {'id':supplement.id})}}"
+                            onclick="confirm('Voulez vous vraiment supprimer ce supplément ?')">Supprimer</a> -->
                     </td>
                 </tr>
                 {% endfor %}

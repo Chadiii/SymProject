@@ -6,10 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use SYM\RestauBundle\Entity\Supplement;
 
 class DefaultController extends Controller
 {
     private $res = array();
+    private $em;
+    private $supplementRepository;
 
     function __construct(){
         for($i=0;$i<=10;$i++){
@@ -105,7 +108,14 @@ class DefaultController extends Controller
      */
     public function manageSupplement()
     {
-        return $this->render('@SYMRestau/Default/manageSupplement.html.twig',);
+        $repository = $this
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('SYMRestauBundle:Supplement')
+        ;
+
+        $listSupplements = $repository->findAll();
+        return $this->render('@SYMRestau/Default/manageSupplement.html.twig',['listSupplements'=>$listSupplements]);
     }
 
     /**
@@ -130,6 +140,19 @@ class DefaultController extends Controller
      */
     public function addSupplement()
     {
+        $supp = new Supplement();
+        $supp->setNom("Fromage");
+        $supp->setPrix(5);
+
+        // On récupère l'EntityManager
+        $em = $this->getDoctrine()->getManager();
+
+        // Étape 1 : On « persiste » l'entité
+        $em->persist($supp);
+
+        // Étape 2 : On « flush » tout ce qui a été persisté avant
+        $em->flush();
+
         return $this->render('@SYMRestau/Default/addSupplement.html.twig',);
     }
 }

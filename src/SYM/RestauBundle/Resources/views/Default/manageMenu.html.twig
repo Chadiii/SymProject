@@ -30,8 +30,8 @@
                         </div>
                     {% endif %}
                     <div class="card-footer">
-                    <a href="#" class="card-link">Modifier</a>
-                    <a href="#" class="card-link">Supprimer</a>
+                    <a href=" {{path('editMenu', {'id':item.id})}} " class="card-link">Modifier</a>
+                    <a href="{{path('deleteMenu', {'id':item.id})}}" class="card-link" onclick="confirm('Voulez vous vraiment supprimer ce plat ?')">Supprimer</a>
                     </div>
                 </div>
             </div>

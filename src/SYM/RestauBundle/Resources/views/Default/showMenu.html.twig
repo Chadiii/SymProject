@@ -1,0 +1,62 @@
+{% extends '@SYMRestau/base.html.twig' %}
+
+{% block title %}Show menu{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <div class="container h-200 pt-5">
+        <div class="row h-200 justify-content-center align-items-center">
+            <div class="col-12 col-lg-10 col-xl-10">
+                <div class="container">
+                    <div class="card" style="width:900px">
+                        {% if item|length > 0 %}
+                            <div class="row">
+                                <div class="col-sm-7">
+                                    <img class="img-responsive" style="width: 500px; height: 400px;  display: block; object-fit: cover;"
+                                        src="{{ item.img }}" alt="Card image">
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="card-body-right">
+                                        <div class="card-title pt-3">
+                                            <h3>{{ item.nom }}</h3>
+                                            <h4><span class="badge badge-primary">{{ item.price }} Dh</span></h4>
+                                        </div>
+                                        {% if item.sup|length > 0 %}
+                                            <div class="card-body">
+                                                <h5>Suppléments </h5>
+                                                <ul class="list-group">
+                                                    {% for ite in item.sup %}
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center py-0">
+                                                        {{ ite.nom }}
+                                                        <span class="badge badge-primary badge-pill">{{ ite.price }} dh</span>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <h5>Description </h5>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                                            </p>
+                                        </div>
+                                        <a href="{{path('index')}}"> Retourner au menu</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                        <div class="card-body">
+                            <h5>Désolé</h5>
+                            <p>
+                                Ce plat n'a pas été trouvé
+                            </p>
+                            <a href="{{path('index')}}" class="btn btn-primary"> Retourner au menu</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

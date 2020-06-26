@@ -40,7 +40,7 @@
                                     <a class="btn btn-link" href="{{ path('supplement_delete', { 'id': supplement.id }) }}" onclick="return confirm('Voulez vous vraiment supprimer ce supplément ?');">Supprimer</a>
                                 </li>
                                 <li>
-                                    <a class="btn btn-link" href="{{path('supplement_index')}}">Retourner au menu</a>
+                                    <a class="btn btn-link" href="{{path('supplement_index')}}">Retourner à la liste</a>
                                 </li>
                             </ul>
                         </div>
@@ -50,7 +50,7 @@
                             <p>
                                 Ce supplément n'a pas été trouvé
                             </p>
-                            <a href="{{path('supplement_index')}}" class="btn btn-primary"> Retourner au menu</a>
+                            <a href="{{path('supplement_index')}}" class="btn btn-primary"> Retourner à la liste</a>
                         </div>
                         {% endif %}
                     </div>

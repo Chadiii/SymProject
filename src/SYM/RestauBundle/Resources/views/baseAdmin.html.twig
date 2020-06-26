@@ -16,11 +16,8 @@
           
             <div class="collapse navbar-collapse" id="navbarColor02">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item {% if current_path == 'manageMenu' %} active {% endif %} ">
-                  <a class="nav-link" href="{{path('manageMenu')}}">Gérer Menu</a>
-                </li>
-                <li class="nav-item {% if current_path == 'addMenu' %} active {% endif %} ">
-                    <a class="nav-link" href="{{path('addMenu')}}">Ajouter Menu</a>
+                <li class="nav-item {% if current_path == 'menu_index' %} active {% endif %} ">
+                  <a class="nav-link" href="{{path('menu_index')}}">Gérer Menu</a>
                 </li>
                 <li class="nav-item {% if current_path == 'supplement_index' %} active {% endif %}">
                     <a class="nav-link" href="{{path('supplement_index')}}">Gérer Supplément</a>

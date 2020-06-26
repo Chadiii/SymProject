@@ -26,7 +26,7 @@ class MenuController extends Controller
 
         $menus = $em->getRepository('SYMRestauBundle:Menu')->findAll();
 
-        return $this->render('menu/index.html.twig', array(
+        return $this->render('@SYMRestau/menu/index.html.twig', array(
             'menus' => $menus,
         ));
     }
@@ -51,7 +51,7 @@ class MenuController extends Controller
             return $this->redirectToRoute('menu_show', array('id' => $menu->getId()));
         }
 
-        return $this->render('menu/new.html.twig', array(
+        return $this->render('@SYMRestau/menu/new.html.twig', array(
             'menu' => $menu,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class MenuController extends Controller
     {
         $deleteForm = $this->createDeleteForm($menu);
 
-        return $this->render('menu/show.html.twig', array(
+        return $this->render('@SYMRestau/menu/show.html.twig', array(
             'menu' => $menu,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -88,10 +88,10 @@ class MenuController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('menu_edit', array('id' => $menu->getId()));
+            return $this->redirectToRoute('menu_index');
         }
 
-        return $this->render('menu/edit.html.twig', array(
+        return $this->render('@SYMRestau/menu/edit.html.twig', array(
             'menu' => $menu,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -101,10 +101,31 @@ class MenuController extends Controller
     /**
      * Deletes a menu entity.
      *
-     * @Route("/{id}", name="menu_delete")
+     * @Route("/delete/{id}", name="menu_delete")
+     * @Method("Get")
+     */
+    public function deleteAction(int $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $menu = $em->getRepository('SYMRestauBundle:Menu')->find($id);
+  
+        if (null != $menu) {
+            $em->remove($menu);
+            $em->flush();
+        }
+        return $this->redirectToRoute('menu_index');
+    }
+
+
+
+    /**
+     * Deletes a menu entity.
+     *
+     * @Route("/{id}", name="menu_delete1")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Menu $menu)
+    public function deleteAction1(Request $request, Menu $menu)
     {
         $form = $this->createDeleteForm($menu);
         $form->handleRequest($request);

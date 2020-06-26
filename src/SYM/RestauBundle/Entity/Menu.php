@@ -24,30 +24,30 @@ class Menu
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_menu", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255)
      */
-    private $nomMenu;
+    private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description_menu", type="text")
+     * @ORM\Column(name="description", type="text")
      */
-    private $descriptionMenu;
+    private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="image_menu", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255)
      */
-    private $imageMenu;
+    private $image;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="prix_menu", type="float")
+     * @ORM\Column(name="prix", type="float")
      */
-    private $prixMenu;
+    private $prix;
 
 
     /**
@@ -61,99 +61,99 @@ class Menu
     }
 
     /**
-     * Set nomMenu
+     * Set nom
      *
-     * @param string $nomMenu
+     * @param string $nom
      *
      * @return Menu
      */
-    public function setNomMenu($nomMenu)
+    public function setNom($nom)
     {
-        $this->nomMenu = $nomMenu;
+        $this->nom = $nom;
 
         return $this;
     }
 
     /**
-     * Get nomMenu
+     * Get nom
      *
      * @return string
      */
-    public function getNomMenu()
+    public function getNom()
     {
-        return $this->nomMenu;
+        return $this->nom;
     }
 
     /**
-     * Set descriptionMenu
+     * Set description
      *
-     * @param string $descriptionMenu
+     * @param string $description
      *
      * @return Menu
      */
-    public function setDescriptionMenu($descriptionMenu)
+    public function setDescription($description)
     {
-        $this->descriptionMenu = $descriptionMenu;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get descriptionMenu
+     * Get description
      *
      * @return string
      */
-    public function getDescriptionMenu()
+    public function getDescription()
     {
-        return $this->descriptionMenu;
+        return $this->description;
     }
 
     /**
-     * Set imageMenu
+     * Set image
      *
-     * @param string $imageMenu
+     * @param string $image
      *
      * @return Menu
      */
-    public function setImageMenu($imageMenu)
+    public function setImage($image)
     {
-        $this->imageMenu = $imageMenu;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get imageMenu
+     * Get image
      *
      * @return string
      */
-    public function getImageMenu()
+    public function getImage()
     {
-        return $this->imageMenu;
+        return $this->image;
     }
 
     /**
-     * Set prixMenu
+     * Set prix
      *
-     * @param float $prixMenu
+     * @param float $prix
      *
      * @return Menu
      */
-    public function setPrixMenu($prixMenu)
+    public function setPrix($prix)
     {
-        $this->prixMenu = $prixMenu;
+        $this->prix = $prix;
 
         return $this;
     }
 
     /**
-     * Get prixMenu
+     * Get prix
      *
      * @return float
      */
-    public function getPrixMenu()
+    public function getPrix()
     {
-        return $this->prixMenu;
+        return $this->prix;
     }
 }
 

@@ -1,0 +1,31 @@
+{% extends '@SYMRestau/baseAdmin.html.twig' %}
+
+{% block title %}Gérer les menus{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Gérer les menus</h1>
+    <a class="btn btn-primary" href="{{ path('menu_new') }}">Ajouter un plat</a>
+
+    <div class="row mt-5">
+        {% for menu in menus %}
+            <div class="col-12 col-lg-6 col-xl-4">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h3>{{ menu.nom }}</h3>
+                        <h4><span class="badge badge-primary">{{ menu.prix }} Dh</span></h4>
+                    </div>
+                    <img class="img-responsive" style="height: 200px;  display: block; object-fit: cover;" src="{{ menu.image }}" alt="Card image">
+                    <div class="card-footer">
+                        <a href="{{ path('menu_show', { 'id': menu.id }) }}" class="card-link">Voir</a>
+                        <a href="{{ path('menu_edit', { 'id': menu.id }) }}" class="card-link">Modifier</a>
+                    <!-- <a href=" {{path('editMenu', {'id':menu.id})}} " class="card-link">Modifier</a>
+                    <a href="{{path('deleteMenu', {'id':menu.id})}}" class="card-link" onclick="confirm('Voulez vous vraiment supprimer ce plat ?')">Supprimer</a> -->
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

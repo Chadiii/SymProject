@@ -13,7 +13,7 @@ class MenuType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nomMenu')->add('descriptionMenu')->add('imageMenu')->add('prixMenu');
+        $builder->add('nom')->add('description')->add('image')->add('prix');
     }/**
      * {@inheritdoc}
      */

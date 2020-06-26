@@ -1,0 +1,62 @@
+{% extends '@SYMRestau/baseAdmin.html.twig' %}
+
+{% block title %}Show menu{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <div class="container h-200 pt-5">
+        <div class="row h-200 justify-content-center align-items-center">
+            <div class="col-12 col-lg-10 col-xl-10">
+                <div class="container">
+                    <div class="card" style="width:900px">
+                        {% if menu != null %}
+                            <div class="row">
+                                <div class="col-sm-7">
+                                    <img class="img-responsive" style="width: 500px; height: 400px;  display: block; object-fit: cover;"
+                                        src="{{ menu.image }}" alt="Card image">
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="card-body-right">
+                                        <div class="card-title pt-3">
+                                            <h3>{{ menu.nom }}</h3>
+                                            <h4><span class="badge badge-primary">{{ menu.prix }} Dh</span></h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5>Description </h5>
+                                            <p>
+                                                {{menu.description}}
+                                            </p>
+                                        </div>
+                                        <hr>
+                                        <ul class="list-group">
+                                            <li class="list-group-item py-0">
+                                                <a href="{{ path('menu_edit', { 'id': menu.id }) }}" class="btn btn-link"> Modifier</a>
+                                            </li>
+                                            <li class="list-group-item py-0">
+                                                <a class="btn btn-link" href="{{ path('menu_delete', { 'id': menu.id }) }}" onclick="return confirm('Voulez vous vraiment supprimer ce plat ?');">Supprimer</a>
+                                            </li>
+                                            <li class="list-group-item py-0">
+                                                <a href="{{path('menu_index')}}" class="btn btn-link"> Retourner à la liste</a>
+                                            </li>
+                                        </ul>
+                                        <!-- {{ form_start(delete_form) }}
+                                            <input class="btn btn-link" type="submit" value="Delete">
+                                        {{ form_end(delete_form) }} -->
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                        <div class="card-body">
+                            <h5>Désolé</h5>
+                            <p>
+                                Ce plat n'a pas été trouvé
+                            </p>
+                            <a href="{{path('menu_index')}}" class="btn btn-primary"> Retourner à la liste</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

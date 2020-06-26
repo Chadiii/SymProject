@@ -23,7 +23,7 @@ class SupplementController extends Controller
     public function indexAction()
     {
         if( !$this->get('session')->get('isLogged'))
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('not_logged');
 
         $em = $this->getDoctrine()->getManager();
         $supplements = $em->getRepository('SYMRestauBundle:Supplement')->findAll();
@@ -42,7 +42,7 @@ class SupplementController extends Controller
     public function newAction(Request $request)
     {
         if( !$this->get('session')->get('isLogged'))
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('not_logged');
 
         $supplement = new Supplement();
         $form = $this->createForm('SYM\RestauBundle\Form\SupplementType', $supplement);
@@ -71,7 +71,7 @@ class SupplementController extends Controller
     public function showAction(Supplement $supplement)
     {
         if( !$this->get('session')->get('isLogged'))
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('not_logged');
 
         return $this->render('@SYMRestau/supplement/show.html.twig', array(
             'supplement' => $supplement,
@@ -87,7 +87,7 @@ class SupplementController extends Controller
     public function editAction(Request $request, Supplement $supplement)
     {
         if( !$this->get('session')->get('isLogged'))
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('not_logged');
 
         $editForm = $this->createForm('SYM\RestauBundle\Form\SupplementType', $supplement);
         $editForm->handleRequest($request);
@@ -113,7 +113,7 @@ class SupplementController extends Controller
     public function deleteAction(int $id)
     {
         if( !$this->get('session')->get('isLogged'))
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('not_logged');
             
         $em = $this->getDoctrine()->getManager();
 

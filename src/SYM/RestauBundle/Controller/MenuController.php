@@ -24,7 +24,7 @@ class MenuController extends Controller
     public function indexAction()
     {
         if( !$this->get('session')->get('isLogged'))
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('not_logged');
 
         $em = $this->getDoctrine()->getManager();
         $menus = $em->getRepository('SYMRestauBundle:Menu')->findAll();
@@ -43,7 +43,7 @@ class MenuController extends Controller
     public function newAction(Request $request)
     {
         if( !$this->get('session')->get('isLogged'))
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('not_logged');
 
         $menu = new Menu();
         $form = $this->createForm('SYM\RestauBundle\Form\MenuType', $menu);
@@ -72,7 +72,7 @@ class MenuController extends Controller
     public function showAction(Menu $menu)
     {
         if( !$this->get('session')->get('isLogged'))
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('not_logged');
 
         return $this->render('@SYMRestau/menu/show.html.twig', array(
             'menu' => $menu,
@@ -88,7 +88,7 @@ class MenuController extends Controller
     public function editAction(Request $request, Menu $menu)
     {
         if( !$this->get('session')->get('isLogged'))
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('not_logged');
 
         $editForm = $this->createForm('SYM\RestauBundle\Form\MenuType', $menu);
         $editForm->handleRequest($request);
@@ -114,7 +114,7 @@ class MenuController extends Controller
     public function deleteAction(int $id)
     {
         if( !$this->get('session')->get('isLogged'))
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('not_logged');
 
         $em = $this->getDoctrine()->getManager();
 

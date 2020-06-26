@@ -67,4 +67,12 @@ class DefaultController extends Controller
         $this->get('session')->set('isLogged', false);
         return $this->redirectToRoute('index');
     }
+
+    /**
+     * @Route("/not_logged", name="not_logged")
+     */
+    public function notLogged()
+    {
+        return $this->render('@SYMRestau/Default/notLogged.html.twig');
+    }
 }

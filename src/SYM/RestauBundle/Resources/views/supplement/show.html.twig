@@ -34,9 +34,6 @@
                                     <a class="btn btn-link" href="{{ path('supplement_edit', { 'id': supplement.id }) }}">Modifier</a>
                                 </li>
                                 <li>
-                                    <!-- {{ form_start(delete_form) }}
-                                        <input class="btn btn-link" type="submit" value="Supprimer">
-                                    {{ form_end(delete_form) }} -->
                                     <a class="btn btn-link" href="{{ path('supplement_delete', { 'id': supplement.id }) }}" onclick="return confirm('Voulez vous vraiment supprimer ce supplément ?');">Supprimer</a>
                                 </li>
                                 <li>

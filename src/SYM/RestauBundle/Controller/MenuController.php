@@ -66,11 +66,8 @@ class MenuController extends Controller
      */
     public function showAction(Menu $menu)
     {
-        $deleteForm = $this->createDeleteForm($menu);
-
         return $this->render('@SYMRestau/menu/show.html.twig', array(
             'menu' => $menu,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -82,7 +79,6 @@ class MenuController extends Controller
      */
     public function editAction(Request $request, Menu $menu)
     {
-        $deleteForm = $this->createDeleteForm($menu);
         $editForm = $this->createForm('SYM\RestauBundle\Form\MenuType', $menu);
         $editForm->handleRequest($request);
 
@@ -95,7 +91,6 @@ class MenuController extends Controller
         return $this->render('@SYMRestau/menu/edit.html.twig', array(
             'menu' => $menu,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -116,43 +111,5 @@ class MenuController extends Controller
             $em->flush();
         }
         return $this->redirectToRoute('menu_index');
-    }
-
-
-
-    /**
-     * Deletes a menu entity.
-     *
-     * @Route("/{id}", name="menu_delete1")
-     * @Method("DELETE")
-     */
-    public function deleteAction1(Request $request, Menu $menu)
-    {
-        $form = $this->createDeleteForm($menu);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($menu);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('menu_index');
-    }
-
-    /**
-     * Creates a form to delete a menu entity.
-     *
-     * @param Menu $menu The menu entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Menu $menu)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('menu_delete', array('id' => $menu->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
     }
 }

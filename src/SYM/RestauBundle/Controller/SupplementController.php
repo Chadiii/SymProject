@@ -65,11 +65,8 @@ class SupplementController extends Controller
      */
     public function showAction(Supplement $supplement)
     {
-        $deleteForm = $this->createDeleteForm($supplement);
-
         return $this->render('@SYMRestau/supplement/show.html.twig', array(
             'supplement' => $supplement,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -81,7 +78,6 @@ class SupplementController extends Controller
      */
     public function editAction(Request $request, Supplement $supplement)
     {
-        $deleteForm = $this->createDeleteForm($supplement);
         $editForm = $this->createForm('SYM\RestauBundle\Form\SupplementType', $supplement);
         $editForm->handleRequest($request);
 
@@ -94,7 +90,6 @@ class SupplementController extends Controller
         return $this->render('@SYMRestau/supplement/edit.html.twig', array(
             'supplement' => $supplement,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -115,43 +110,5 @@ class SupplementController extends Controller
             $em->flush();
         }
         return $this->redirectToRoute('supplement_index');
-    }
-
-
-
-    /**
-     * Deletes a supplement entity.
-     *
-     * @Route("/{id}", name="supplement_delete1")
-     * @Method("DELETE")
-     */
-    public function deleteAction1(Request $request, Supplement $supplement)
-    {
-        $form = $this->createDeleteForm($supplement);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($supplement);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('supplement_index');
-    }
-
-    /**
-     * Creates a form to delete a supplement entity.
-     *
-     * @param Supplement $supplement The supplement entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Supplement $supplement)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('supplement_delete', array('id' => $supplement->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
     }
 }

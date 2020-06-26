@@ -48,8 +48,11 @@ class DefaultController extends Controller
         $login = $request->request->get('login');
         $password = $request->request->get('password');
         if($login != null && $password != null){
-            if($login == "admin" && $password == "admin")
+            if($login == "admin" && $password == "admin"){
+                $this->get('session')->set('isLogged', true);
+
                 return $this->redirectToRoute('menu_index');
+            }
             else
             return $this->render('@SYMRestau/Default/login.html.twig', ["errorMessage"=>"Identifiants incorrects"]);
         }
@@ -61,6 +64,7 @@ class DefaultController extends Controller
      */
     public function logout()
     {
+        $this->get('session')->set('isLogged', false);
         return $this->redirectToRoute('index');
     }
 }

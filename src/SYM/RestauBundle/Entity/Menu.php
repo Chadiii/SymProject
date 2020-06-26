@@ -2,6 +2,7 @@
 
 namespace SYM\RestauBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -48,6 +49,39 @@ class Menu
      * @ORM\Column(name="prix", type="float")
      */
     private $prix;
+
+
+     /**
+     * @ORM\ManyToMany(targetEntity="SYM\RestauBundle\Entity\Supplement", cascade={"persist"})
+     */
+    private $supplements;
+
+
+    public function __construct()
+    {
+        $this->supplements = new ArrayCollection();
+    }
+
+    public function addSupplement(Supplement $supplement)
+    {
+        $this->supplements[] = $supplement;
+    }
+
+    public function removeSupplement(Supplement $supplement)
+    {
+        $this->supplements->removeElement($supplement);
+    }
+    
+    /**
+     * Get supplements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSupplements()
+    {
+        return $this->supplements;
+    }
+
 
 
     /**
@@ -155,5 +189,5 @@ class Menu
     {
         return $this->prix;
     }
-}
 
+}

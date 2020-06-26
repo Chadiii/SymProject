@@ -20,9 +20,6 @@
                                     <a href="{{path('menu_index')}}" class="btn btn-link"> Retourner à la liste</a>
                                 </li>
                                 <li>
-                                    <!-- {{ form_start(delete_form) }}
-                                    <input class="btn btn-link" type="submit" value="Supprimer">
-                                    {{ form_end(delete_form) }} -->
                                     <a class="btn btn-link" href="{{ path('menu_delete', { 'id': menu.id }) }}" onclick="return confirm('Voulez vous vraiment supprimer ce plat ?');">Supprimer</a>
                                 </li>
                             </ul>

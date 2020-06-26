@@ -32,9 +32,6 @@
                     <td>
                         <a class="btn btn-primary mr-2" href=" {{ path('supplement_show', { 'id': supplement.id }) }} ">Voir</a>
                         <a class="btn btn-primary mr-2" href=" {{ path('supplement_edit', { 'id': supplement.id }) }} ">Modifier</a>
-
-                        <!-- <a class="btn btn-primary" href="{{path('deleteSupplement', {'id':supplement.id})}}"
-                            onclick="confirm('Voulez vous vraiment supprimer ce supplément ?')">Supprimer</a> -->
                     </td>
                 </tr>
                 {% endfor %}

@@ -5,6 +5,7 @@ namespace SYM\RestauBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class MenuType extends AbstractType
 {
@@ -13,7 +14,13 @@ class MenuType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('description')->add('image')->add('prix');
+        $builder->add('nom')->add('description')->add('image')->add('prix')
+            ->add('supplements', EntityType::class, array(
+                'class'        => 'SYMRestauBundle:Supplement',
+                'choice_label' => 'nom',
+                'multiple'     => true,
+                'expanded' => true,
+            ));
     }/**
      * {@inheritdoc}
      */

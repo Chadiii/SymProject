@@ -67,7 +67,7 @@ Enjoy!
 
 <h3>DEMO</h3>
 
-<a href="https://youtu.be/RWg-j8compI" rel="nofollow"><img src="https://i9.ytimg.com/vi_webp/RWg-j8compI/mqdefault.webp?sqp=CIyX5vsF&rs=AOn4CLAGwwGueRAoYRt5_ngZcrMF0JQleA" alt="Demo Application" data-canonical-src="https://youtu.be/RWg-j8compI" style="max-width:100%;"></a>
+<a href="https://youtu.be/RWg-j8compI" rel="nofollow"><img src="https://i.ytimg.com/vi/RWg-j8compI/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBJJRxwcEehDWt7CpqNczjYJtvV3g" alt="Demo Application" data-canonical-src="https://youtu.be/RWg-j8compI" style="max-width:100%;"></a>
 
 
 [1]:  https://symfony.com/doc/3.4/setup.html

@@ -65,6 +65,11 @@ released under the MIT or BSD license.
 
 Enjoy!
 
+<h3>DEMO</h3>
+
+<a href="https://youtu.be/RWg-j8compI" rel="nofollow"><img src="https://i.ytimg.com/vi/RWg-j8compI/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBJJRxwcEehDWt7CpqNczjYJtvV3g" alt="Demo Application" data-canonical-src="https://youtu.be/RWg-j8compI" style="max-width:100%;"></a>
+
+
 [1]:  https://symfony.com/doc/3.4/setup.html
 [6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
 [7]:  https://symfony.com/doc/3.4/doctrine.html
